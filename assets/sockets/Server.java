@@ -13,6 +13,7 @@ import java.lang.Thread;
 public class Server{
 	Crypt crypt;
 	ServerSocket sk;
+	
 	public String maskedPassword(String prompt){
 		String password = "";
 		EraserThread et = new EraserThread(prompt);

@@ -7,11 +7,12 @@ import assets.sockets.Crypt;
 //importing Java packages...
 import java.io.*;
 import java.util.*;
+import java.net.*;
 import java.lang.Thread;
 
 public class Server{
-	Crypt crypt = new Crypt();
-
+	Crypt crypt;
+	ServerSocket sk;
 	public String maskedPassword(String prompt){
 		String password = "";
 		EraserThread et = new EraserThread(prompt);
@@ -33,6 +34,7 @@ public class Server{
 		String password = "";
 		String repass = "";
 		int ok = 0;
+		this.crypt = new Crypt();
 
 		System.out.printf("\n	Username: ");
 		username = sc.next();

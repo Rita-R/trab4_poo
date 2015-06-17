@@ -1,0 +1,29 @@
+App de Mercado Online em Java
+
+->O que deve ser feito:
+	#SERVER : aplicação de server
+	#CLIENT : aplicação de cliente
+
+	Users.csv : arquivo de usuários
+	Prod.csv : arquivo de produtos
+
+	Funcionamento básico:
+		- O server deve estar funcionando para realizar as operações
+		- Caso contrário, deve mostrar ao cliente que o servidor está offline!
+
+	Funcionalidades:
+
+	- Sistema de Login de Usuários :
+		- Cadastrar funcionários (usuários com operações de criar/remover/atualizar produtos) #SERVER
+		- Cadastrar consumidores (usuários que podem apenas ver/comprar produtos) #SERVER
+		- Incluir sistema de criptografia RSA para as senhas. #SERVER
+		- Manter todos os usuários num arquivo, gravando as senhas criptografadas #SERVER
+		- Logar usuários, verificando a senha criptografada #CLIENT
+		- "Esqueci minha senha" manda email para o usuário com a senha (opcional) #SERVER #JavaMail API
+
+	- Sistema de Compra/Listagem:
+		- Listar todos os produtos (disponíveis ou não) #SERVER
+		- Fazer uma compra. #CLIENT manda informações para #SERVER
+			- Sincronizar cliente com server para verificar ainda há no estoque
+
+	- Quando um produto está em falta, fazer pedido ao fornecedor.

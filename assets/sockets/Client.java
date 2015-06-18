@@ -8,8 +8,13 @@ import java.util.*;
 import java.net.*;
 
 public class Client{
-	Socket sk;
+	Socket cclient;
 	
-
+	public void connection(String servAdress)throws IOException, UnknownHostException{
+		this.cclient = new Socket(servAdress,12345)	;
+	}
 	
+	public void close()throws IOException{
+		this.cclient.close();
+	}
 }

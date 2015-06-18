@@ -16,14 +16,51 @@ App de Mercado Online em Java
 	- Sistema de Login de Usuários :
 		- Cadastrar funcionários (usuários com operações de criar/remover/atualizar produtos) #SERVER
 		- Cadastrar consumidores (usuários que podem apenas ver/comprar produtos) #SERVER
-		- Incluir sistema de criptografia RSA para as senhas. #SERVER
+			> Ir no arquivo
+			> Verificar se já existe
+			> Se existe:
+				Não adiciona
+			> Se não existe:
+				Adiciona no final do arquivo
+
+		- Incluir sistema de criptografia SHA1 para as senhas. #SERVER
+			#Já implementado#
 		- Manter todos os usuários num arquivo, gravando as senhas criptografadas #SERVER
 		- Logar usuários, verificando a senha criptografada #CLIENT
 		- "Esqueci minha senha" manda email para o usuário com a senha (opcional) #SERVER #JavaMail API
 
 	- Sistema de Compra/Listagem:
-		- Listar todos os produtos (disponíveis ou não) #SERVER
+		- Listar todos os produtos (disponíveis ou não) #SERVER #CLIENT
+			> Criar uma stream com o arquivo de produtos
+			> Filtrar pelo campo disponível
+			> Se for False, imprime como indisponível
+				Perguntar se quer ser notificado via email
+				quando algum produto estiver disponível
+				> Se sim
+					Escrever num arquivo todos os pedidos + email do usuário
+					Quando os itens estiverem disponíveis mandar email para o usuário
+			> Se for True, imprime como disponível
+
+		- Cadastrar produtos #SERVER
+			> Ir no arquivo
+			> Verificar se já existe
+			> Se existe:
+				Recupera entrada
+				Atualiza estoque
+				Sobrescreve no arquivo
+			> Se não existe:
+				Adiciona no final do arquivo
+
 		- Fazer uma compra. #CLIENT manda informações para #SERVER
-			- Sincronizar cliente com server para verificar ainda há no estoque
+			> Manda o pedido para o server
+			> Sincronizar cliente com server para verificar ainda há no estoque (Thread Synchronized)
+			> Se o produto estiver disponível
+				Reduz o estoque
+				Verifica se deu 0 (settar como indisponível se sim)
+				Se o pedido deu certo
+					> Client ecoa que o pedido foi feito com sucesso
+					> Server ecoa pedido
+			> Se o produto não estiver disponível
+				Rotina de notificação
 
 	- Quando um produto está em falta, fazer pedido ao fornecedor.

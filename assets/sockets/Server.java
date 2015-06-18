@@ -10,10 +10,11 @@ import java.util.*;
 import java.net.*;
 import java.lang.Thread;
 
-public class Server{
-	Crypt crypt;
+public class Server implements Runnable{
+	Crypt crypt = new Crypt();
 	ServerSocket sk;
-	
+	Socket client;
+
 	public String maskedPassword(String prompt){
 		String password = "";
 		EraserThread et = new EraserThread(prompt);
@@ -35,8 +36,7 @@ public class Server{
 		String password = "";
 		String repass = "";
 		int ok = 0;
-		this.crypt = new Crypt();
-
+		
 		System.out.printf("\n	Username: ");
 		username = sc.next();
 
@@ -62,4 +62,19 @@ public class Server{
 		}
 	}
 
+	public void run(){}
+
+
+	public void serverUp()throws IOException{
+		this.sk = new ServerSocket(12345);
+	}
+	
+	public void connect(Socket client){
+		this.client = this.sk.accept();
+	}
+	
+	public void close(){
+		this.client.close();
+		this.sk.close();
+	}
 }

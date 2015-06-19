@@ -11,6 +11,7 @@ public class main{
 		try{
 			cl.connect("127.0.0.1");
 			cl.sendMessage();
+			cl.getMessage();
 			cl.finishing();
 		}
 		catch(IOException badConnection){

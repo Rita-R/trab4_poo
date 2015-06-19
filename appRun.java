@@ -8,7 +8,6 @@ import java.io.*;
 
 public class appRun{
 	Controller con;
-	EraserThread et;
 	Server server;
 	Crypt crypt;
 

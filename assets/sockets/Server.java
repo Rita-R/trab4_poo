@@ -1,32 +1,19 @@
 package assets.sockets;
 
 //importing our assets...
-import assets.screen.EraserThread;
 import assets.sockets.Crypt;
 
 //importing Java packages...
 import java.io.*;
 import java.util.*;
 import java.net.*;
+import java.awt.event.*;
 import java.lang.Thread;
 
 public class Server implements Runnable{
 	Crypt crypt = new Crypt();
 	ServerSocket sk;
 	Socket client;
-	public String maskedPassword(String prompt){
-		String password = "";
-		EraserThread et = new EraserThread(prompt);
-
-		Thread mask = new Thread(et);
-		mask.start();
-
-		Scanner sc = new Scanner(System.in);
-		password = sc.nextLine();
-
-		et.stopMasking();
-		return password;
-	}
 
 	public void signUp(){
 		Scanner sc = new Scanner(System.in);
@@ -40,9 +27,9 @@ public class Server implements Runnable{
 		username = sc.next();
 
 		while(ok == 0){
-			password = this.maskedPassword("\tPassword: ");
+			password = new String(cons.readPassword("\tPassword: "));
 
-			repass = this.maskedPassword("\tRetype Password: ");
+			repass = new String(cons.readPassword("\tRetype Password: "));
 
 			try{
 				if(crypt.encrypt(password).equals(crypt.encrypt(repass))) ok = 1;
@@ -65,15 +52,15 @@ public class Server implements Runnable{
 
 
 	public void serverUp()throws IOException{
-		this.sk = new ServerSocket(12345);
+		//this.sk = new ServerSocket(12345);
 	}
 	
 	public void connect(Socket client){
-		this.client = this.sk.accept();
+		//this.client = this.sk.accept();
 	}
 	
 	public void close(){
-		this.client.close();
-		this.sk.close();
+		//this.client.close();
+		//this.sk.close();
 	}
 }

@@ -3,10 +3,7 @@ import java.io.*;
 import java.net.*;
 
 
-
-
-
-public class Client{
+public class Client implements Runnable{
 	Socket sk;
 	
 
@@ -33,5 +30,12 @@ public class Client{
 		this.sk.close();
 	}
 
-	
+	public void run(){
+		try{
+			getMessage();
+		}
+		catch(IOException badConnection){
+			System.out.println("bad connection");
+		}
+	}
 }

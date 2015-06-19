@@ -4,7 +4,7 @@ import java.net.*;
 
 
 
-public class Server{
+public class Server implements Runnable{
 	ServerSocket sk;
 	Socket client;
 
@@ -23,10 +23,10 @@ public class Server{
 		sc.close();
 	}
 	public void  send2User()throws IOException{
-		Scanner sc = new Scanner(System.in);
 		PrintStream pr = new PrintStream(this.client.getOutputStream());
-		if(sc.hasNextLine()){
-			pr.println(sc.nextLine());
+		Scanner sc = new Scanner(System.in);
+		while(sc.hasNextLine()){
+			pr.println("Server says: "+sc.nextLine());
 		}
 		pr.close();
 		sc.close();
@@ -36,4 +36,12 @@ public class Server{
 		this.sk.close();
 	}
 
+	public void run(){
+		try{
+			send2User();
+		}	
+		catch(IOException badConnection){
+			System.out.println("bad connection")		;
+		}
+	}
 }

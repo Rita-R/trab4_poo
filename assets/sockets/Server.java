@@ -2,7 +2,8 @@ package assets.sockets;
 
 //importing our assets...
 import assets.sockets.Crypt;
-
+import assets.products.*;
+import assets.users.*;
 //importing Java packages...
 import java.io.*;
 import java.util.*;
@@ -52,15 +53,29 @@ public class Server implements Runnable{
 
 
 	public void serverUp()throws IOException{
-		//this.sk = new ServerSocket(12345);
+		this.sk = new ServerSocket(12345);
 	}
 	
 	public void connect(Socket client){
-		//this.client = this.sk.accept();
+		this.client = this.sk.accept();
 	}
 	
 	public void close(){
-		//this.client.close();
-		//this.sk.close();
+		this.client.close();
+		this.sk.close();
 	}
+
+	public void registerProd(Prod target)throws IOException{
+		BufferedWriter bw = new BufferedWriter(new FileWriter("prods.csv",true));
+		bw.append(target.getProdName()+" "+target.getPrice+" "+target.getDisponibility()+" "+target.getNumberOfProducts());
+		bw.close();
+	}
+	public void registerUser(User target)throws IOException{
+		BufferedWriter bw = new BufferedWriter(new FileWriter("users.csv",true));
+		bw.append(target.getUserName()+" "+target.getUserAddress+" "+target.getUserEmail()+" "+target.getUserType());
+		bw.close();
+	}
+
+
+
 }

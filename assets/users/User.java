@@ -37,14 +37,27 @@ public class User{
 		char verify='k';
 		this.sc = new Scanner(System.in);
 	
-		while(true){
+		while(verify!='a'|| verify!='c'|| verify !='a' || verify!='c'){
 			verify = this.sc.next().charAt(0);
-			if(verify=='A'|| verify=='C') break;
-			System.out.printf("\t>Inválido. Informe se é Admin ou Comum ");
+			if(verify!='a'|| verify!='c'|| verify !='a' || verify!='c')
+				System.out.printf("\t>Inválido. Informe se é Admin ou Comum ");
 		}
-		if(verify=='A')
+		if(verify=='A'|| verify=='a')
 				this.type=true;
 		else
 				this.type=false;
+	}
+	
+	public String getUserName(){
+		return this.name;
+	}
+	public String getUserEmail(){
+		return this.email;
+	}
+	public String getUserAdress(){
+		return this.address;
+	}
+	public boolean getUserType(){
+		return this.type;	
 	}
 }

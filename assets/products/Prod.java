@@ -48,13 +48,16 @@ public class Prod{
 		this.nprods=nitens;
 	}
 
-	String getProdName(){
+	public String getProdName(){
 		return this.name;
 	}
-	boolean getDisponibility(){
+	public boolean getDisponibility(){
 		return this.available;
 	}
-	float getPrice(){
+	public float getPrice(){
 		return this.price;
+	}
+	public int getNumberOfProducts(){
+		return this.nprods;	
 	}
 }

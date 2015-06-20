@@ -3,7 +3,6 @@ import java.io.*;
 import java.net.*;
 
 
-
 public class Server implements Runnable{
 	ServerSocket sk;
 	Socket client;
@@ -41,7 +40,7 @@ public class Server implements Runnable{
 			send2User();
 		}	
 		catch(IOException badConnection){
-			System.out.println("bad connection")		;
+			System.out.println("bad connection");
 		}
 	}
 }

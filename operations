@@ -1,0 +1,26 @@
+Na aplicação cliente o sistema deve:
+
+-Recuperar a lista de produtos do servidor (obter os dados do servidor);
+	função que le saidas um por um da função print_product do server e as imprime.
+-Listar os produtos disponíveis e indisponíveis (mostrar os dados recuperados);
+	função que le saidas um por um da função print_ok do server e as imprime 
+-Permitir efetuar a compra de produtos. Verificar no momento da compra se existe 
+no estoque a quantidade requisitada de produtos. Se não, avisar o usuário quais 
+produtos estão em falta no momento (pela interface apenas).
+	função pede info de um produto pro server pela função search_product e verifica se
+	ok=1 e realiza compra, pega o valor do estoque e atualiza e devolve pro server
+	que atualiza o produto pela função update_product.
+ 
+Na aplicação servidor o sistema deve:
+
+-Listar os produtos em estoque e os esgotados;
+	implementação da função print_ok , print_notok, print_product (todos)
+-Realizar a atualização do estoque de produtos já existentes, quando estes chegarem atualize
+a quantidade no estoque.
+	implementação da função search_product e update_product
+
+EXTRAS
+
+-Geração de relatórios PDF (1.5)
+-Uso de pelo menos 1 padrão de projeto e descrever no README. (1.5)
+
